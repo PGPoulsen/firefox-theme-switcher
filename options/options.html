@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firefox Theme Switcher - Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="settings-container">
+    <!-- Header -->
+    <header class="settings-header">
+      <div class="header-content">
+        <div class="header-icon">🌓</div>
+        <div>
+          <h1>Firefox Theme Switcher</h1>
+          <p class="subtitle">Customize your one-click dark &amp; light theme experience</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btnQuickTest" class="btn btn-secondary">
+          <span class="icon">⚡</span> Quick Toggle Now
+        </button>
+      </div>
+    </header>
+
+    <main class="settings-body">
+      <!-- Section 1: Interaction & Behavior -->
+      <section class="settings-card">
+        <h2>
+          <span class="section-icon">🖱️</span>
+          Toolbar Icon &amp; Shortcut
+        </h2>
+        <p class="card-desc">Choose how you interact with the extension in Firefox.</p>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">When clicking the toolbar button:</span>
+            <span class="setting-subtitle">Control the primary left-click behavior</span>
+          </div>
+          <div class="radio-group">
+            <label class="radio-card">
+              <input type="radio" name="clickAction" value="toggle" id="clickActionToggle">
+              <div class="radio-content">
+                <strong>Instant 1-Click Toggle</strong>
+                <span>Directly flips between Light and Dark mode</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="clickAction" value="popup" id="clickActionPopup">
+              <div class="radio-content">
+                <strong>Open Popup Menu</strong>
+                <span>Opens the quick selector menu for modes &amp; palettes</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-item border-top">
+          <div class="setting-info">
+            <span class="setting-title">Keyboard Shortcut</span>
+            <span class="setting-subtitle">Toggle themes from anywhere without using the mouse</span>
+          </div>
+          <div class="shortcut-display">
+            <div class="kbd-wrap">
+              <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd>
+            </div>
+            <button id="btnManageShortcuts" class="btn btn-outline">
+              Configure in Firefox
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Theme Target Scope -->
+      <section class="settings-card">
+        <h2>
+          <span class="section-icon">🎯</span>
+          Theme Scope
+        </h2>
+        <p class="card-desc">Choose what elements should switch when you toggle themes.</p>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Firefox Browser UI</span>
+            <span class="setting-subtitle">Changes tabs, address bar, navigation bar, and dialog colors</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="optToggleBrowserUI">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item border-top">
+          <div class="setting-info">
+            <span class="setting-title">Websites &amp; Web Content</span>
+            <span class="setting-subtitle">Overrides <code>prefers-color-scheme</code> so supported websites render in dark/light</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="optToggleWebsites">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item border-top">
+          <div class="setting-info">
+            <span class="setting-title">Browser Theme Engine</span>
+            <span class="setting-subtitle">Choose between dynamic custom palettes or Firefox's default built-in theme</span>
+          </div>
+          <select id="optThemeEngine" class="select-input">
+            <option value="presets">Custom Color Palettes (OLED, Charcoal, Slate, Dracula, Nord)</option>
+            <option value="builtin">Firefox Built-in Themes (Default Compact Light/Dark)</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Section 3: Color Palettes -->
+      <section class="settings-card" id="palettesSection">
+        <h2>
+          <span class="section-icon">🎨</span>
+          Color Palettes
+        </h2>
+        <p class="card-desc">Select your preferred color schemes for dark and light modes.</p>
+
+        <!-- Dark Presets -->
+        <div class="preset-group">
+          <h3 class="preset-group-title">🌙 Dark Mode Palette</h3>
+          <div class="palette-grid" id="darkPresetsGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Light Presets -->
+        <div class="preset-group">
+          <h3 class="preset-group-title">☀️ Light Mode Palette</h3>
+          <div class="palette-grid" id="lightPresetsGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Automatic Scheduling -->
+      <section class="settings-card">
+        <h2>
+          <span class="section-icon">⏰</span>
+          Automation &amp; Scheduling
+        </h2>
+        <p class="card-desc">Automatically switch themes based on system settings or the time of day.</p>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Schedule Mode</span>
+            <span class="setting-subtitle">Choose how automatic switching is controlled</span>
+          </div>
+          <select id="optAutoSchedule" class="select-input">
+            <option value="disabled">Manual Only (Disabled)</option>
+            <option value="system">Follow Operating System Theme (prefers-color-scheme)</option>
+            <option value="time">Time of Day (Sunset / Custom Hours)</option>
+          </select>
+        </div>
+
+        <div class="schedule-time-row" id="scheduleTimeContainer">
+          <div class="time-field">
+            <label for="optDarkTime">Turn Dark at:</label>
+            <input type="time" id="optDarkTime" value="20:00" class="time-input">
+          </div>
+          <div class="time-field">
+            <label for="optLightTime">Turn Light at:</label>
+            <input type="time" id="optLightTime" value="07:00" class="time-input">
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Reset -->
+      <section class="settings-card danger-zone">
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Reset to Defaults</span>
+            <span class="setting-subtitle">Revert all options and theme settings back to initial defaults</span>
+          </div>
+          <button id="btnResetSettings" class="btn btn-danger">
+            Reset Settings
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Save Toast Notification -->
+    <div id="saveToast" class="toast">Settings saved successfully!</div>
+  </div>
+
+  <script src="../shared/presets.js"></script>
+  <script src="../shared/storage.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

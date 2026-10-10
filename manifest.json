@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "Easy Theme Switcher (Dark & Light)",
+  "version": "1.0.0",
+  "description": "Easily switch between dark and light themes for Firefox browser UI and web pages with one click or keyboard shortcut.",
+  "icons": {
+    "16": "icons/moon-16.png",
+    "32": "icons/moon-32.png",
+    "48": "icons/moon-48.png",
+    "128": "icons/moon-128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/moon-16.png",
+      "32": "icons/moon-32.png",
+      "48": "icons/moon-48.png",
+      "128": "icons/moon-128.png"
+    },
+    "default_title": "Theme Switcher: Dark Mode Active (Click to switch to Light | Alt+Shift+D)"
+  },
+  "background": {
+    "scripts": [
+      "shared/presets.js",
+      "shared/storage.js",
+      "background.js"
+    ]
+  },
+  "permissions": [
+    "theme",
+    "browserSettings",
+    "management",
+    "storage",
+    "menus",
+    "alarms"
+  ],
+  "commands": {
+    "toggle-theme": {
+      "suggested_key": {
+        "default": "Alt+Shift+D"
+      },
+      "description": "Toggle between dark and light theme"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "easy-theme-switcher@pgpoulsen.local",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
+}
