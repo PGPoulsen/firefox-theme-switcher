@@ -53,12 +53,12 @@ It changes **both** Firefox's browser interface (tabs, toolbars, address bar) an
 ### Option A: Quick Load via `about:debugging` (Recommended for immediate testing)
 1. Open Firefox and navigate to `about:debugging#/runtime/this-firefox` in the address bar.
 2. Click **"Load Temporary Add-on…"**.
-3. Navigate to `/home/pgpoulsen/Source/firefox-theme-switcher/` and select the [manifest.json](file:///home/pgpoulsen/Source/firefox-theme-switcher/manifest.json) file.
+3. Navigate to `~/Source/firefox-theme-switcher/` and select the [manifest.json] file.
 4. The extension will immediately load and appear in your Firefox toolbar!
 
 ### Option B: Install the Packaged Add-on (`.xpi` / `.zip`)
 A ready-to-use package has already been built:
-- Location: `/home/pgpoulsen/Source/firefox-theme-switcher/dist/easy-theme-switcher.xpi`
+- Location: `~/Source/firefox-theme-switcher/dist/easy-theme-switcher.xpi`
 - In Firefox:
   1. Go to `about:addons`.
   2. Click the gear icon (⚙️) at the top of the Extensions list.
