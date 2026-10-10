@@ -57,7 +57,6 @@ It changes **both** Firefox's browser interface (tabs, toolbars, address bar) an
 4. The extension will immediately load and appear in your Firefox toolbar!
 
 ### Option B: Install the Packaged Add-on (`.xpi` / `.zip`)
-A ready-to-use package has already been built:
 - Location: `~/Source/firefox-theme-switcher/dist/easy-theme-switcher.xpi`
 - In Firefox:
   1. Go to `about:addons`.
